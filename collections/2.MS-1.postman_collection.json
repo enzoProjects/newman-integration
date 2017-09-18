@@ -1,0 +1,65 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MS-1",
+		"_postman_id": "3a763311-9f42-b880-345a-d8c4ca5cb21a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "endpoint1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"postman.clearEnvironmentVariable(\"pathProcesado\");",
+							"",
+							"tests[request.url] = true;"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"let endpoints = JSON.parse(postman.getGlobalVariable(\"diccionarioEndpoints\"));",
+							"",
+							"let variables = JSON.parse(postman.getEnvironmentVariable(\"endpoint1\"));",
+							"",
+							"var endpoint1 = endpoints.endpoint1;",
+							"",
+							"pathProcesado = endpoint1",
+							"    .replace(\"{idCliente}\", variables.idCliente)",
+							"    .replace(\"{pais}\", variables.pais);",
+							"",
+							"postman.setEnvironmentVariable(\"pathProcesado\", pathProcesado);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "www.google.com{{pathProcesado}}",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "endpoint2",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

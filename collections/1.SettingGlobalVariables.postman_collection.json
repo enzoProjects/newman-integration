@@ -1,0 +1,69 @@
+{
+	"variables": [],
+	"info": {
+		"name": "SettingGlobalVariables",
+		"_postman_id": "a432b173-21f7-4747-2030-bc65a25db90a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "settingGlobalVariables",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"schemas = jsonData.definitions;",
+							"",
+							"let diccionarioEndpoints = {",
+							"    endpoint1 : \"/{idCliente}/1?pais={pais}\", ",
+							"    endpoint2 : \"/algo/2\",",
+							"    endpoint3 : \"/algo/3\"",
+							"};",
+							"",
+							"postman.setGlobalVariable(\"schemas\", JSON.stringify(schemas));",
+							"postman.setGlobalVariable(\"diccionarioEndpoints\", JSON.stringify(diccionarioEndpoints));",
+							"",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"url": {
+					"raw": "https://apiwedesa.portal.azure-api.net/docs/services/5977c45fd257c9037cc2ba95/export?DocumentFormat=Swagger",
+					"protocol": "https",
+					"host": [
+						"apiwedesa",
+						"portal",
+						"azure-api",
+						"net"
+					],
+					"path": [
+						"docs",
+						"services",
+						"5977c45fd257c9037cc2ba95",
+						"export"
+					],
+					"query": [
+						{
+							"key": "DocumentFormat",
+							"value": "Swagger",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
